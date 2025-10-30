@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { analyzeThrow } from '../src'
+import { analyzeThrow, calculateScore } from '../src'
 
 describe('Yams - analyzeThrow', () => {
     describe('Yams', () => {
@@ -54,5 +54,35 @@ describe('Yams - analyzeThrow', () => {
             expect(result.figure).toBe('Chance')
             expect(result.points).toBe(16)
         })
+    })
+})
+
+describe('Yams - calculateScore', () => {
+    it('calcule le score total de plusieurs lancers', () => {
+        const throws = [
+            [6, 6, 6, 6, 6],
+            [3, 3, 3, 2, 2],
+            [1, 2, 3, 4, 5]
+        ]
+        const total = calculateScore(throws)
+        expect(total).toBe(120)
+    })
+
+    it('calcule le score avec un seul lancer', () => {
+        const throws = [
+            [4, 4, 4, 4, 2]
+        ]
+        const total = calculateScore(throws)
+        expect(total).toBe(35)
+    })
+
+    it('calcule le score avec des lancers variés', () => {
+        const throws = [
+            [3, 3, 3, 2, 5],
+            [1, 2, 3, 4, 6],
+            [6, 6, 6, 6, 6]
+        ]
+        const total = calculateScore(throws)
+        expect(total).toBe(94)
     })
 })
