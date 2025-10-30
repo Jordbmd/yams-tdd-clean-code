@@ -17,6 +17,11 @@ export function analyzeThrow(dices) {
         return { figure: 'Carré', points: total }
     }
 
+    // 3x + 2x donc full
+    if (values.includes(3) && values.includes(2)) {
+        return { figure: 'Full', points: 30 }
+    }
+
     // 3x donc brelan
     if (values.includes(3)) {
         const total = dices.reduce((sum, val) => sum + val, 0)

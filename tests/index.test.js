@@ -25,4 +25,10 @@ describe('Analyse des figures', () => {
         expect(result.figure).toBe('Chance')
         expect(result.points).toBe(16)
     })
+
+    it('Détecter un Full (3x + 2x)', () => {
+        const result = analyzeThrow([3, 3, 3, 2, 2])
+        expect(result.figure).toBe('Full')
+        expect(result.points).toBe(30)
+    })
 })
